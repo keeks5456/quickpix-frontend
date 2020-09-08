@@ -1,4 +1,7 @@
- const userURL = "http://localhost:3000/users"
+
+
+  const userURL = "http://localhost:3000/users"
+
   let profile = document.querySelector('.profile-container')
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main-container')
@@ -76,6 +79,7 @@ const buildPortrait = (portrait) => {
   ` 
   // console.log(portrait.attributes.description)
   mainContainer.appendChild(div)
+
   let card = document.getElementById(portrait.id)
   card.addEventListener('click', (e) => popImage(portrait))
 
@@ -84,5 +88,6 @@ const buildPortrait = (portrait) => {
 const popImage = (e) => {
   console.log(e.target)
 }
+
 
 // need to do the comments here
