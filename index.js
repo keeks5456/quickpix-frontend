@@ -1,5 +1,3 @@
-let mainContainer = document.querySelector('.main-container')
-let profile = document.querySelector('.profile-container')
 
   const userURL = "http://localhost:3000/users"
   let profile = document.querySelector('.profile-container')
@@ -89,11 +87,10 @@ const buildPortrait = (portrait) => {
   mainContainer.appendChild(div)
 
 let card = document.getElementById(portrait.id)
-let btn = card.querySelector('button')
-console.log(btn)
+
 
 
 }
-}
+
  
 // need to do the comments here
