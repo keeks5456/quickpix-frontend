@@ -1,7 +1,4 @@
-let mainContainer = document.querySelector('.main-container')
-let profile = document.querySelector('.profile-container')
-
-  const userURL = "http://localhost:3000/users"
+ const userURL = "http://localhost:3000/users"
   let profile = document.querySelector('.profile-container')
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main-container')
@@ -64,22 +61,14 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
-  <div class="photo-container" id="myModal">
-  <div class="row">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="row">
+            <a href="${portrait.attributes.img_url} " data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src= ${portrait.attributes.img_url} class="img-fluid">
+            </a>
+          </div>
 
-
-  <div class="modal-dialog">
-  <div class="modal-content">
-  <div class="modal-header">
-  <div class="modal=body">
-  <div class="modal=footer">
-    </div>
-  </div>
- </div>
-
- 
-
-  <img src=${portrait.attributes.img_url} />
   <h2>comments: ${portrait.attributes.comments}</h2>
   <h5>description: ${portrait.attributes.description}</h5>
   <div class=${portrait.attributes.likes}"likes-section">
@@ -87,13 +76,13 @@ const buildPortrait = (portrait) => {
   ` 
   // console.log(portrait.attributes.description)
   mainContainer.appendChild(div)
-
-let card = document.getElementById(portrait.id)
-let btn = card.querySelector('button')
-console.log(btn)
-
+  let card = document.getElementById(portrait.id)
+  card.addEventListener('click', (e) => popImage(portrait))
 
 }
+
+const popImage = (e) => {
+  console.log(e.target)
 }
- 
+
 // need to do the comments here
