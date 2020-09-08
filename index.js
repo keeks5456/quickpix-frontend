@@ -1,19 +1,13 @@
 
-let mainContainer = document.querySelector('.main-container')
-let profile = document.querySelector('.profile-container')
-let button = document.querySelector('.btn btn-primary')
-console.log(button)
-
   const userURL = "http://localhost:3000/users"
-  
-  let mainContainer = document.querySelector('.main-container')
   let profile = document.querySelector('.profile-container')
-  console.log(profile)
+  let button = document.querySelector('.btn btn-primary')
+  let mainContainer = document.querySelector('.main-container')
   const profileContainer = document.querySelector('.profile-container')
  
   //fetch user api
   const fetchOneUser = () => {
-    fetch(userURL)
+    fetch("http://localhost:3000/users")
     .then(res => res.json())
     .then(json => json.forEach(user => {
       buildProfile(user)
@@ -24,7 +18,6 @@ console.log(button)
 
   //build user profile
   const buildProfile = (user) =>{
-    console.log(user)
 
     const userDiv = document.createElement('div')
     userDiv.className = "user-profile-pic"
@@ -35,7 +28,21 @@ console.log(button)
 
     userDiv.appendChild(image)
     profileContainer.appendChild(userDiv)
-    console.log(profileContainer)
+  
+  }
+
+  //build user bio
+  function buildBio(user){
+    const userProfile = document.getElementById(user.id)
+    const userBio = document.createElement('div')
+    userBio.className = 'user-bio'
+    console.log(userBio)
+    userBio.innerHTML = `
+      <h2>${user.name}</h2>
+      <h4>${user.bio}</h4>
+    `
+    userProfile.appendChild(userBio)
+    console.log(userProfile)
   }
   
 //fetch all photos
@@ -48,7 +55,7 @@ fetchAllPhotos()
 
 //build phots
 const buildPortrait = (portrait) => {
-  console.log(portrait)
+  // console.log(portrait)
   let div = document.createElement('div')
   div.className = 'card'
   div.id = portrait.id
@@ -68,8 +75,10 @@ const buildPortrait = (portrait) => {
   <h2>comments: ${portrait.attributes.comments}</h2>
   <h4>description: ${portrait.attributes.description}</h4>
   <div class=${portrait.attributes.likes}"likes-section">
-  <span class="likes">0 likes</span>
-  <button class="like-button">♥</button>
+
   ` 
+  // console.log(portrait.attributes.description)
   mainContainer.appendChild(div)
 }
+ 
+// need to do the comments here
