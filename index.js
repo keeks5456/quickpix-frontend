@@ -1,7 +1,8 @@
-  
-  let mainContainer = document.querySelector('.main-container')
+
+  const userURL = "http://localhost:3000/users"
   let profile = document.querySelector('.profile-container')
-  
+  let button = document.querySelector('.btn btn-primary')
+  let mainContainer = document.querySelector('.main-container')
   const profileContainer = document.querySelector('.profile-container')
  
   //fetch user api
@@ -59,9 +60,20 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <img src="//placehold.it/1000x600" class="img-responsive">
+        </div>
+    </div>
+  </div>
+</div>
   <img src=${portrait.attributes.img_url} />
-  <h2>${portrait.attributes.comments}</h2>
-  <h4>${portrait.attributes.description}</h4>
+  <h2>comments: ${portrait.attributes.comments}</h2>
+  <h4>description: ${portrait.attributes.description}</h4>
   <div class=${portrait.attributes.likes}"likes-section">
 
   ` 
