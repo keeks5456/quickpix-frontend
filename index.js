@@ -20,7 +20,6 @@
 
   //build user profile
   const buildProfile = (user) =>{
-
     const userDiv = document.createElement('div')
     userDiv.className = "user-profile-pic"
     // userDiv.dataset.id = user.id
@@ -37,7 +36,7 @@
   function buildBio(user){
     const userProfile = document.querySelector(".user-profile-pic")
     // debugger
-    console.log(userProfile)
+
     const userBio = document.createElement('div')
     userBio.className = 'user-bio'
     userBio.innerHTML = `
@@ -56,19 +55,15 @@ fetch(`http://localhost:3000/portraits`)
 }
 fetchAllPhotos()
 
+
 //build photos
 const buildPortrait = (portrait) => {
   let div = document.createElement('div')
   div.className = 'card'
   div.id = portrait.id
-  console.log(div)
-  console.log(portrait.id)
-
   div.innerHTML = `
-
         <img src= ${portrait.attributes.img_url} class="img-fluid">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
-
         <form method="post">
         <div>
         <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.0em;"></textarea>
@@ -77,24 +72,20 @@ const buildPortrait = (portrait) => {
         </form>
         <div class="likes-section">
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
-
-         <ul>${commentSection(portrait)}</ul>
-    
   ` 
   mainContainer.appendChild(div)
 
-// likes event listener
+
   listenForLikes(portrait)
+  commentSection(portrait)
 
 } // end of buildPortrait
 
 
 
-// need to do the comments here
+// create comments
 function commentSection(portrait){
-
-  const ul = document.getElementsByName('ul')
-  ul.innerHTML = ''
+console.log(portrait)
   const newUl = document.createElement('ul')
   newUl.className = 'comments'
   
@@ -103,8 +94,9 @@ function commentSection(portrait){
     li.textContent = comment.content
     newUl.appendChild(li)
   })
-
-  const likes = document.querySelector('.likes-section')
+  const currentCard= document.getElementById(portrait.id)
+  const likes = currentCard.querySelector('.likes-section')
+  likes.appendChild(newUl)
   console.log(likes)
   // likes.appendChild(newUl)
 
