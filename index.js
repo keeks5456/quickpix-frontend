@@ -23,7 +23,7 @@
 
     const userDiv = document.createElement('div')
     userDiv.className = "user-profile-pic"
-    userDiv.id = user.id
+    // userDiv.dataset.id = user.id
 
     const image = document.createElement('img')
     image.src = user.image
@@ -35,7 +35,9 @@
 
   //build user bio
   function buildBio(user){
-    const userProfile = document.getElementById(user.id)
+    const userProfile = document.querySelector(".user-profile-pic")
+    // debugger
+    console.log(userProfile)
     const userBio = document.createElement('div')
     userBio.className = 'user-bio'
     userBio.innerHTML = `
@@ -60,21 +62,30 @@ const buildPortrait = (portrait) => {
   // console.log(portrait)
   let div = document.createElement('div')
   div.className = 'card'
-  div.dataset.id = portrait.id
+  div.id = portrait.id
   div.innerHTML = `
   <div>
-          <img src= ${portrait.attributes.img_url} class="img-fluid">
-          <h5 class='description'>description: ${portrait.attributes.description}</h5>
-          <ul>${commentSection(portrait)}</ul>
-          <div class=${portrait.attributes.likes}"likes-section">	 
-          <span class="likes">0 likes</span>	 
-          <button class="like-button">♥</button>
-  </div>
-  ` 
+        <img src= ${portrait.attributes.img_url} class="img-fluid">
+        <h5 class='description'>description: ${portrait.attributes.description}</h5>
 
+        <ul>${commentSection(portrait)}</ul>
+        <form method="post">
+        <div>
+        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.0em;"></textarea>
+        </div>
+        <input type="submit" value="Submit">
+        </form>
+
+         <div class="likes-section">
+         <span>
+         <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
+         </span>
+         </div>
+  ` 
   mainContainer.appendChild(div)
 
-
+// likes event listener
+  listenForLikes(portrait)
 
 } // end of buildPortrait
 
@@ -82,6 +93,7 @@ const buildPortrait = (portrait) => {
 
 // need to do the comments here
 function commentSection(portrait){
+
   const ul = document.getElementsByName('ul')
   ul.innerHTML = ''
   const newUl = document.createElement('ul')
@@ -92,27 +104,39 @@ function commentSection(portrait){
     li.textContent = comment.content
     newUl.appendChild(li)
   })
-
-  const likesSection = document.querySelector('.like-button')
-  // likes.appendChild(newUl)
-
-  console.log(likesSection)
-
-  // console.log(portrait.attributes.comments)
+// need help on the comment section
 }
 
+  function listenForLikes(portrait){
+    const currentCard = document.getElementById(portrait.id)
+    const likesBtn = currentCard.querySelector('.like-button')
+    likesBtn.addEventListener('click', ()=>{
+      patchLikes( portrait)
+      // console.log()
+    })
+    console.log(likesBtn)
+  }
 
+  const patchLikes = ( portrait) => {
 
+    // debugger
+    data = {
+      like: portrait.attributes.like += 1,
+    }
 
-
-//this is fr the modal, come back to this later
-// <a href="${portrait.attributes.img_url} " data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-// <img src= ${portrait.attributes.img_url} class="img-fluid">
-// </a>
-// </div>
-// <h5 class='description'>description: ${portrait.attributes.description}</h5>
-// <ul>${commentSection(portrait)}</ul>
-// <div class='likes-btn'${portrait.attributes.likes}"likes-section">
-// add likes to this section 
-// </div>
-// </div>
+    fetch(`http://localhost:3000/portraits/${portrait.id}`,{
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(json => {
+      let currentCard = document.getElementById(json.id)
+      let button = currentCard.querySelector('.like-button')
+     
+      button.textContent = `${json.like} likes ♥`
+      console.log(button)
+    })
+  }
