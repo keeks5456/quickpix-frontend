@@ -1,12 +1,17 @@
 
-
   const userURL = "http://localhost:3000/users"
 
   let profile = document.querySelector('.profile-container')
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
- 
+  let addPortrait = document.querySelector('.form')
+  addPortrait.addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log(e)
+    addNewPortrait(portrait)})
+
+  console.log(addPortrait)
   //fetch user api
   const fetchOneUser = () => {
     fetch("http://localhost:3000/users")
@@ -66,18 +71,18 @@ const buildPortrait = (portrait) => {
 
   div.innerHTML = `
 
+
         <img src= ${portrait.attributes.img_url} class="img-fluid">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
-
         <form method="post">
         <div>
         <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.0em;"></textarea>
         </div>
         <input type="submit" value="Submit">
         </form>
+
         <div class="likes-section">
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
-
          <ul>${commentSection(portrait)}</ul>
     
   ` 
@@ -141,4 +146,21 @@ function commentSection(portrait){
     })
   }
 
-
+  
+const addNewPortrait = (e) => {
+  let portrait = {
+    img_url:e.form[0].value,
+    description:e.form[1].value,
+    like:0
+  }
+  fetch(`http://localhost:3000/portraits`,{
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: "application/json"
+    },
+    body: JSON.stringify(portrait),
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
