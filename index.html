@@ -20,16 +20,26 @@
     <!-- js script tag -->
     <script defer type="text/javascript" src="index.js"></script>
 
+
     <!-- JQuery heart animation -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
+      
 
   </head>
 
   <body>
     <h1>quickPix</h1>
+    <div class='container add-form'>
+      <form class='form'>
+        <label for="portrait">Image url:</label>
+        <input type="text" id="portrait"  name="portrait" value="" placeholder="Enter Picture URL"><br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="" placeholder="Enter Image Description"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
     <!-- this container encapsulates the entire profile of the user -->
     <div class="main container">
       <div class="profile container">
@@ -53,7 +63,7 @@
     <!-- end of main container div -->
 
     <!-- start of form to add new pictures here -->
-    <div class='container form'>
+    <!-- <div class='container form'>
       <form class='add-portrait'>
         <label for="portrait ">Image url:</label>
         <input type="text" id="portrait" name="portrait" placeholder="Enter Picture URL"><br><br>
@@ -61,7 +71,7 @@
         <input type="text" id="description" name="description" placeholder="Enter Image Description"><br><br>
         <input type="submit" value="Submit">
       </form>
-    </div>
+    </div> -->
 
 
     <!-- Optional JavaScript -->

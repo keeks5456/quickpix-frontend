@@ -1,12 +1,23 @@
 
-
   const userURL = "http://localhost:3000/users"
 
   let profile = document.querySelector('.profile-container')
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
- 
+
+  function listenForSubmit(){
+  const addPortrait = document.querySelector('.form')
+  addPortrait.addEventListener('submit', (e) => {
+  e.preventDefault()
+  addNewPortrait(portrait)
+  addPortrait.reset()
+})
+}
+  listenForSubmit()
+
+
+
   //fetch user api
   const fetchOneUser = () => {
     fetch("http://localhost:3000/users")
@@ -23,10 +34,8 @@
     const userDiv = document.createElement('div')
     userDiv.className = "user-profile-pic"
     // userDiv.dataset.id = user.id
-
     const image = document.createElement('img')
     image.src = user.image
-
     userDiv.appendChild(image)
     profileContainer.appendChild(userDiv)
   
@@ -35,8 +44,6 @@
   //build user bio
   function buildBio(user){
     const userProfile = document.querySelector(".user-profile-pic")
-    // debugger
-
     const userBio = document.createElement('div')
     userBio.className = 'user-bio'
     userBio.innerHTML = `
@@ -44,7 +51,6 @@
       <h4>${user.bio}</h4>
     `
     userProfile.appendChild(userBio)
-  
   }
   
 //fetch all photos
@@ -70,38 +76,17 @@ const buildPortrait = (portrait) => {
         </div>
         <input type="submit" value="Submit">
         </form>
+
         <div class="likes-section">
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
   ` 
   mainContainer.appendChild(div)
 
-
   listenForLikes(portrait)
   commentSection(portrait)
-
+  listenForComment(portrait)
 } // end of buildPortrait
 
-
-
-// create comments
-function commentSection(portrait){
-console.log(portrait)
-  const newUl = document.createElement('ul')
-  newUl.className = 'comments'
-  
-  portrait.attributes.comments.map(comment => {
-    let li = document.createElement('li')
-    li.textContent = comment.content
-    newUl.appendChild(li)
-  })
-  const currentCard= document.getElementById(portrait.id)
-  const likes = currentCard.querySelector('.likes-section')
-  likes.appendChild(newUl)
-  console.log(likes)
-  // likes.appendChild(newUl)
-
-// need help on the comment section
-}
 
   function listenForLikes(portrait){
     const currentCard = document.getElementById(portrait.id)
@@ -110,7 +95,6 @@ console.log(portrait)
       patchLikes( portrait)
 
     })
-    // console.log(likesBtn)
   }
 
   const patchLikes = ( portrait) => {
@@ -133,4 +117,42 @@ console.log(portrait)
     })
   }
 
+  function commentSection(portrait){
+      const newUl = document.createElement('ul')
+      newUl.className = 'comments'
+      
+      portrait.attributes.comments.map(comment => {
+        let li = document.createElement('li')
+        li.textContent = comment.content
+        newUl.appendChild(li)
+      })
+      const currentCard= document.getElementById(portrait.id)
+      const likes = currentCard.querySelector('.likes-section')
+      likes.appendChild(newUl)
+    }
+
+    function listenForComment(portrait){
+      
+      console.log(portrait)
+    }
+
+
+  // create a post
+const addNewPortrait = (e) => {
+  let portrait = {
+    img_url:e.form[0].value,
+    description:e.form[1].value,
+    like:0
+  }
+  fetch(`http://localhost:3000/portraits`,{
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: "application/json"
+    },
+    body: JSON.stringify(portrait),
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
 
