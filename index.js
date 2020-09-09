@@ -5,17 +5,41 @@
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
-
+//this is for submitting new portrait
   function listenForSubmit(){
   const addPortrait = document.querySelector('.form')
   addPortrait.addEventListener('submit', (e) => {
   e.preventDefault()
   addNewPortrait(portrait)
   addPortrait.reset()
-})
+})  
+listenForSubmit()
+  }
+  // this is for delete
+function listenForDelete(portrait){
+  const currentCard = document.getElementById(portrait.id)
+  const deleteBtn = currentCard.querySelector('#delete')
+  deleteBtn.addEventListener('click', () => {
+    deletePortrait(portrait)
+  })
+  // listenForDelete()
+    // console.log(e)
 }
-  listenForSubmit()
 
+
+const deletePortrait = (portrait) => {
+  const currentCard = document.getElementById(portrait.id)
+  currentCard.remove()
+  fetch(`http://localhost:3000/portraits/${portrait.id}`,{
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
 
 
   //fetch user api
@@ -77,8 +101,8 @@ const buildPortrait = (portrait) => {
         </div>
         <input type="submit" value="Submit">
         </form>
-
         <div class="likes-section">
+        <button id="delete"> X </button>
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
   ` 
   mainContainer.appendChild(div)
@@ -86,6 +110,7 @@ const buildPortrait = (portrait) => {
   listenForLikes(portrait)
   commentSection(portrait)
   listenForComment(portrait)
+  listenForDelete(portrait)
 } // end of buildPortrait
 
 
@@ -133,10 +158,13 @@ const buildPortrait = (portrait) => {
     }
 
     function listenForComment(portrait){
-
-      console.log(portrait)
-    }
-
+    let commentForm = document.querySelector('.comments')
+    commentForm.addEventListener('submit', (e) => {
+      console.log(e)
+      e.preventDefault()
+      addNewComment(portrait)
+    })
+  }
 
   // create a post
 const addNewPortrait = (e) => {
