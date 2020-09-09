@@ -64,6 +64,7 @@ fetchAllPhotos()
 
 //build photos
 const buildPortrait = (portrait) => {
+  // debugger
   let div = document.createElement('div')
   div.className = 'card'
   div.id = portrait.id
@@ -132,17 +133,18 @@ const buildPortrait = (portrait) => {
     }
 
     function listenForComment(portrait){
-      
+
       console.log(portrait)
     }
 
 
   // create a post
 const addNewPortrait = (e) => {
+  
   let portrait = {
-    img_url:e.form[0].value,
-    description:e.form[1].value,
-    like:0
+    img_url: e.form[0].value,
+    description: e.form[1].value,
+    like: 0
   }
   fetch(`http://localhost:3000/portraits`,{
     method: 'POST', 
@@ -153,6 +155,9 @@ const addNewPortrait = (e) => {
     body: JSON.stringify(portrait),
   })
   .then(res => res.json())
-  .then(json => console.log(json))
+  .then(json => {
+    console.log(json)
+    buildPortrait(json)
+  })
 }
 
