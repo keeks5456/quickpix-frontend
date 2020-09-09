@@ -12,9 +12,10 @@
   e.preventDefault()
   addNewPortrait(portrait)
   addPortrait.reset()
-})  
+})
+  }  
 listenForSubmit()
-  }
+
   // this is for delete
 function listenForDelete(portrait){
   const currentCard = document.getElementById(portrait.id)
@@ -185,7 +186,7 @@ const addNewPortrait = (e) => {
   .then(res => res.json())
   .then(json => {
     console.log(json)
-    buildPortrait(json)
+    // buildPortrait(json)
   })
 }
 
