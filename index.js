@@ -1,4 +1,7 @@
- const userURL = "http://localhost:3000/users"
+
+
+  const userURL = "http://localhost:3000/users"
+
   let profile = document.querySelector('.profile-container')
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main-container')
@@ -35,13 +38,12 @@
     const userProfile = document.getElementById(user.id)
     const userBio = document.createElement('div')
     userBio.className = 'user-bio'
-    console.log(userBio)
     userBio.innerHTML = `
       <h2>${user.name}</h2>
       <h4>${user.bio}</h4>
     `
     userProfile.appendChild(userBio)
-    console.log(userProfile)
+  
   }
   
 //fetch all photos
@@ -55,11 +57,10 @@ fetchAllPhotos()
 //build phots
 const buildPortrait = (portrait) => {
 
-  console.log(portrait)
   // console.log(portrait)
   let div = document.createElement('div')
   div.className = 'card'
-  div.id = portrait.id
+  div.dataset.id = portrait.id
   div.innerHTML = `
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -69,13 +70,38 @@ const buildPortrait = (portrait) => {
 
             </a>
           </div>
-
-  <h2>comments: ${portrait.attributes.comments}</h2>
-  <h5>description: ${portrait.attributes.description}</h5>
-  <div class=${portrait.attributes.likes}"likes-section">
+          <h5>description: ${portrait.attributes.description}</h5>
+          <ul>${commentSection(portrait)}</ul>
+          <div class='likes-btn'${portrait.attributes.likes}"likes-section">
+          add likes to this section 
+        </div>
+      </div>
   ` 
   // console.log(portrait.attributes.description)
   mainContainer.appendChild(div)
 
-  let card = document.getElementById(portrait.id)
+
+
+
+} // end of buildPortrait
+
+
+
+
+// need to do the comments here
+function commentSection(portrait){
+  const ul = document.getElementsByName('ul')
+  console.log(ul)
+  ul.innerHTML = ''
+  const newUl = document.createElement('ul')
+  newUl.className = 'comments'
+  
+  portrait.attributes.comments.map(comment => {
+    let li = document.createElement('li')
+    li.textContent = comment.content
+    newUl.appendChild(li)
+   
+
+  })
+  // console.log(portrait.attributes.comments)
 }
