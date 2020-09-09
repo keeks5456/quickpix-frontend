@@ -161,12 +161,5 @@ const addNewPortrait = (e) => {
     body: JSON.stringify(portrait),
   })
   .then(res => res.json())
-  .then(json => console.log(json))
+  .then(json => buildPortrait(json))
 }
-//   let toy = {
-//     name:e.target.name.value,
-//     image:e.target.image.value,
-//     likes:0
-//   }
-//   postNewToy(toy)
-// }
