@@ -64,6 +64,7 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
+
   <div>
         <img src= ${portrait.attributes.img_url} class="img-fluid">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
@@ -124,6 +125,7 @@ function commentSection(portrait){
       like: portrait.attributes.like += 1,
     }
 
+
     fetch(`http://localhost:3000/portraits/${portrait.id}`,{
       method: 'PATCH',
       headers: {
@@ -140,3 +142,5 @@ function commentSection(portrait){
       console.log(button)
     })
   }
+
+
