@@ -64,25 +64,18 @@ const buildPortrait = (portrait) => {
   <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="row">
-            <a href="${portrait.attributes.img_url} " data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="${portrait.attributes.img_url}" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
                 <img src= ${portrait.attributes.img_url} class="img-fluid">
+
             </a>
           </div>
 
   <h2>comments: ${portrait.attributes.comments}</h2>
   <h5>description: ${portrait.attributes.description}</h5>
   <div class=${portrait.attributes.likes}"likes-section">
-
   ` 
   // console.log(portrait.attributes.description)
   mainContainer.appendChild(div)
+
   let card = document.getElementById(portrait.id)
-  card.addEventListener('click', (e) => popImage(portrait))
-
 }
-
-const popImage = (e) => {
-  console.log(e.target)
-}
-
-// need to do the comments here
