@@ -58,30 +58,28 @@ fetchAllPhotos()
 
 //build photos
 const buildPortrait = (portrait) => {
-
-  // console.log(portrait)
   let div = document.createElement('div')
   div.className = 'card'
   div.id = portrait.id
+  console.log(div)
+  console.log(portrait.id)
+
   div.innerHTML = `
 
-  <div>
         <img src= ${portrait.attributes.img_url} class="img-fluid">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
 
-        <ul>${commentSection(portrait)}</ul>
         <form method="post">
         <div>
         <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.0em;"></textarea>
         </div>
         <input type="submit" value="Submit">
         </form>
-
-         <div class="likes-section">
-         <span>
+        <div class="likes-section">
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
-         </span>
-         </div>
+
+         <ul>${commentSection(portrait)}</ul>
+    
   ` 
   mainContainer.appendChild(div)
 
@@ -105,6 +103,11 @@ function commentSection(portrait){
     li.textContent = comment.content
     newUl.appendChild(li)
   })
+
+  const likes = document.querySelector('.likes-section')
+  console.log(likes)
+  // likes.appendChild(newUl)
+
 // need help on the comment section
 }
 
@@ -113,19 +116,15 @@ function commentSection(portrait){
     const likesBtn = currentCard.querySelector('.like-button')
     likesBtn.addEventListener('click', ()=>{
       patchLikes( portrait)
-      // console.log()
+
     })
-    console.log(likesBtn)
+    // console.log(likesBtn)
   }
 
   const patchLikes = ( portrait) => {
-
-    // debugger
     data = {
       like: portrait.attributes.like += 1,
     }
-
-
     fetch(`http://localhost:3000/portraits/${portrait.id}`,{
       method: 'PATCH',
       headers: {
@@ -137,7 +136,6 @@ function commentSection(portrait){
     .then(json => {
       let currentCard = document.getElementById(json.id)
       let button = currentCard.querySelector('.like-button')
-     
       button.textContent = `${json.like} likes ♥`
       console.log(button)
     })
