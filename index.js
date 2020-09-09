@@ -5,7 +5,7 @@
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
-//this is for submitting new portrait
+  //this is for submitting new portrait
   function listenForSubmit(){
   const addPortrait = document.querySelector('.form')
   addPortrait.addEventListener('submit', (e) => {
