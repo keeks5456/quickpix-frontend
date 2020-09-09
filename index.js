@@ -62,6 +62,7 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.dataset.id = portrait.id
   div.innerHTML = `
+
   <div>
           <img src= ${portrait.attributes.img_url} class="img-fluid">
           <h5 class='description'>description: ${portrait.attributes.description}</h5>
@@ -105,6 +106,7 @@ function commentSection(portrait){
 
 
 
+
 //this is fr the modal, come back to this later
 // <a href="${portrait.attributes.img_url} " data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
 // <img src= ${portrait.attributes.img_url} class="img-fluid">
@@ -116,3 +118,4 @@ function commentSection(portrait){
 // add likes to this section 
 // </div>
 // </div>
+
