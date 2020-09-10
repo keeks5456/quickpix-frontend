@@ -93,6 +93,7 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
+
         <img src= ${portrait.attributes.img_url} class="img-fluid">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
         <form data-portrait=${portrait.id} class="comment-form">
@@ -104,15 +105,18 @@ const buildPortrait = (portrait) => {
           />
           <button class="comment-button" type="submit">Post</button>
         </form>
+        
         <div class="likes-section">
+
         <button id="delete"> X </button>
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
-  ` 
+           ` 
   mainContainer.appendChild(div)
 
   listenForLikes(portrait)
   commentSection(portrait)
   listenForComment(portrait)
+  listenForEditComment(portrait)
   listenForDelete(portrait)
 } // end of buildPortrait
 
@@ -154,10 +158,16 @@ const buildPortrait = (portrait) => {
         let li = document.createElement('li')
         li.textContent = comment.content
         newUl.appendChild(li)
+        const editBtn = document.createElement('button')
+        editBtn.className = 'edit-button'
+        editBtn.dataset.commentId = comment.id
+        editBtn.innerText = '...' 
+        li.appendChild(editBtn)
+
       })
       const currentCard= document.getElementById(portrait.id)
-      const likes = currentCard.querySelector('.likes-section')
-      likes.appendChild(newUl)
+      const description = currentCard.querySelector('.description')
+      description.after(newUl)
     }
 //event listen for comments
     function listenForComment(portrait){
@@ -199,7 +209,44 @@ const buildPortrait = (portrait) => {
     }
 
     // edit the comments here
-    // create a popout form 
+    function listenForEditComment(portrait){
+      const currentCard = document.getElementById(portrait.id)
+      let editBtn = currentCard.querySelector('button.edit-button')
+      console.log(editBtn)
+      editBtn.addEventListener('click', (e)=> {
+          patchEditComments(portrait, e)
+        // console.log(portrait, e)
+      })
+    }
+
+    function patchEditComments(e){
+      // let getComments = e.attributes.comments
+      // getComments.forEach(comment => {
+      //   comment.
+      // })
+
+      let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
+      let data = {
+        content: commentPrompt
+      }
+      // debugger
+      fetch(`http://localhost:3000/comments/${e.id}`,{
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        console.log(e)
+        const li = document.getElementById(json.content)
+ 
+        debugger
+      })
+    }
+    
 
 
   // create a post
@@ -207,7 +254,8 @@ const addNewPortrait = (e) => {
   let portrait = {
     img_url: e.form[0].value,
     description: e.form[1].value,
-    like: 0
+    like: 0,
+    user_id: 1
   }
   fetch(`http://localhost:3000/portraits`,{
     method: 'POST', 
