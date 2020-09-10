@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS -->
+    <!-- Bootstrap & CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
 
     <!-- js script tag -->
     <script defer type="text/javascript" src="index.js"></script>
@@ -17,8 +19,8 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   </head>
   <body>
-    <h1>quickPix</h1>
-    <div class='container add-form'>
+    
+    <div class='container add-form' style="text-align:center">
       <form class='form'>
         <label for="portrait">Image url:</label>
         <input type="text" id="portrait"  name="portrait" value="" placeholder="Enter Picture URL"><br><br>
@@ -27,6 +29,9 @@
         <input type="submit" value="Submit">
       </form>
     </div>
+    <p style="text-align:center">
+      Ready To Post Your Portraits! <button id="new-portrait-btn">Add New Portrait!</button>
+    </p>
     <!-- this container encapsulates the entire profile of the user -->
     <div class="main container">
       <div class="profile container">
@@ -38,8 +43,11 @@
         </div>
         <div id="github-handle">
         </div>
-        <div class="card container">
-          
+        <div class="cards container">
+        </div>
+<!-- please add colors to button -->
+<!-- go to bootswatch.com footer add icons but a different for footers-->
+        <div id="github-handle">
         </div>
         <!-- insert our github handles, this should be sectioned at the bottom right or we make it a footer?? -->
       </div>

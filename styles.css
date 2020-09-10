@@ -33,13 +33,25 @@
   }
 
   body {
-    background-color: #3d228a
+    background-color: #002b36
   }
 
-.card > img { 
-  box-shadow: 10px 10px 8px #888888;
-  height: 20em;
-  width: 20em;
-}
+  img {
+ 
+    height: 20em;
+    width: 100%;
+    object-fit: cover;
+  }
+
+ div.cards.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+ }
+
+
+
+
   
+
 

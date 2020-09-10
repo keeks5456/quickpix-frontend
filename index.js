@@ -1,3 +1,19 @@
+  let addPortrait = false
+
+  const addBtn = document.querySelector('#new-portrait-btn')
+
+  const portraitFormContainer = document.querySelector('.add-form')
+  addBtn.addEventListener('click', () => {
+    console.log(addPortrait)
+    addPortrait = !addPortrait
+    if(addPortrait){
+      portraitFormContainer.style.display = "none"
+    } else {
+      portraitFormContainer.style.display = "block"
+    }
+  })
+  console.log(portraitFormContainer)
+
 
   const userURL = "http://localhost:3000/users"
 
@@ -5,8 +21,8 @@
   const button = document.querySelector('.btn btn-primary')
   const mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
-  const cardContainer = document.querySelector('.card')
-  console.log(cardContainer)
+  const cardContainer = document.querySelector('.cards')
+
 
   //this is for submitting new portrait
   function listenForSubmit(){
@@ -74,8 +90,14 @@ const deletePortrait = (portrait) => {
     const userBio = document.createElement('div')
     userBio.className = 'user-bio'
     userBio.innerHTML = `
-      <h2>${user.name}</h2>
-      <h4>${user.bio}</h4>
+
+    <div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">${user.name}</h5>
+    <p class="card-text">${user.bio}</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
     `
     userProfile.appendChild(userBio)
   }
@@ -96,8 +118,8 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
-
-        <img src= ${portrait.attributes.img_url} class="img-fluid">
+        <img src= ${portrait.attributes.img_url} class="profile" alt="Avatar" >
+        <div class="container">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
         <form data-portrait=${portrait.id} class="comment-form">
           <input
@@ -108,11 +130,12 @@ const buildPortrait = (portrait) => {
           />
           <button class="comment-button" type="submit">Post</button>
         </form>
-        
-        <div class="likes-section">
-
         <button id="delete"> X </button>
-         <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
+        <div class="likes-section">
+        <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
+        </div>
+      </div>
+      
            ` 
   cardContainer.appendChild(div)
 
@@ -275,3 +298,22 @@ const addNewPortrait = (e) => {
   })
 }
 
+
+
+
+
+
+// <img src= ${portrait.attributes.img_url}>
+// <h5 class='description'>description: ${portrait.attributes.description}</h5>
+// <form data-portrait=${portrait.id} class="comment-form">
+//   <input
+//     class="comment-input"
+//     type="text"
+//     name="comment"
+//     placeholder="Add a comment..."
+//   />
+//   <button class="comment-button" type="submit">Post</button>
+// </form>
+// <button id="delete"> X </button>
+// <div class="likes-section">
+// <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
