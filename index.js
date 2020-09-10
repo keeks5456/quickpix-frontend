@@ -24,10 +24,10 @@ function listenForDelete(portrait){
     deletePortrait(portrait)
   })
   // listenForDelete()
-    // console.log(e)
 }
 
 
+//delete method to delete card
 const deletePortrait = (portrait) => {
   const currentCard = document.getElementById(portrait.id)
   currentCard.remove()
@@ -41,7 +41,6 @@ const deletePortrait = (portrait) => {
   .then(res => res.json())
   .then(json => console.log(json))
 }
-
 
   //fetch user api
   const fetchOneUser = () => {
@@ -96,11 +95,14 @@ const buildPortrait = (portrait) => {
   div.innerHTML = `
         <img src= ${portrait.attributes.img_url} class="img-fluid">
         <h5 class='description'>description: ${portrait.attributes.description}</h5>
-        <form method="post">
-        <div>
-        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.0em;"></textarea>
-        </div>
-        <input type="submit" value="Submit">
+        <form data-portrait=${portrait.id} class="comment-form">
+          <input
+            class="comment-input"
+            type="text"
+            name="comment"
+            placeholder="Add a comment..."
+          />
+          <button class="comment-button" type="submit">Post</button>
         </form>
         <div class="likes-section">
         <button id="delete"> X </button>
@@ -119,12 +121,12 @@ const buildPortrait = (portrait) => {
     const currentCard = document.getElementById(portrait.id)
     const likesBtn = currentCard.querySelector('.like-button')
     likesBtn.addEventListener('click', ()=>{
-      patchLikes( portrait)
+      patchLikes(portrait)
 
     })
   }
-
-  const patchLikes = ( portrait) => {
+//patch request likes
+  const patchLikes = (portrait) => {
     data = {
       like: portrait.attributes.like += 1,
     }
@@ -140,10 +142,10 @@ const buildPortrait = (portrait) => {
       let currentCard = document.getElementById(json.id)
       let button = currentCard.querySelector('.like-button')
       button.textContent = `${json.like} likes ♥`
-      console.log(button)
+
     })
   }
-
+//create comments
   function commentSection(portrait){
       const newUl = document.createElement('ul')
       newUl.className = 'comments'
@@ -157,19 +159,51 @@ const buildPortrait = (portrait) => {
       const likes = currentCard.querySelector('.likes-section')
       likes.appendChild(newUl)
     }
-
+//event listen for comments
     function listenForComment(portrait){
-    let commentForm = document.querySelector('.comments')
-    commentForm.addEventListener('submit', (e) => {
-      console.log(e)
-      e.preventDefault()
-      addNewComment(portrait)
-    })
-  }
+      const portraitComment = document.getElementById(portrait.id)
+      const commentForm = portraitComment.querySelector('.comment-form')
+      commentForm.addEventListener('submit', (e)=> {
+        e.preventDefault()
+        postComments(e)
+        commentForm.reset()
+      })
+    }
+//fetch comments
+    function postComments(e){
+      console.log()
+      data = {
+        content: e.target[0].value,
+        portrait_id: e.target.dataset.portrait
+      }
+      console.log(data)
+
+      fetch(`http://localhost:3000/comments`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(json => {
+        const ul = document.querySelector('ul')
+        const li = document.createElement('li')
+        li.textContent = json["data"].attributes.content
+        console.log(ul)
+        ul.appendChild(li)
+
+
+      })
+    }
+
+    // edit the comments here
+    // create a popout form 
+
 
   // create a post
 const addNewPortrait = (e) => {
-  
   let portrait = {
     img_url: e.form[0].value,
     description: e.form[1].value,
