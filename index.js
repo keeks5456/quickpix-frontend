@@ -1,10 +1,13 @@
 
   const userURL = "http://localhost:3000/users"
 
-  let profile = document.querySelector('.profile-container')
-  let button = document.querySelector('.btn btn-primary')
-  let mainContainer = document.querySelector('.main')
+  const profile = document.querySelector('.profile-container')
+  const button = document.querySelector('.btn btn-primary')
+  const mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
+  const cardContainer = document.querySelector('.card')
+  console.log(cardContainer)
+
   //this is for submitting new portrait
   function listenForSubmit(){
   const addPortrait = document.querySelector('.form')
@@ -111,7 +114,7 @@ const buildPortrait = (portrait) => {
         <button id="delete"> X </button>
          <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
            ` 
-  mainContainer.appendChild(div)
+  cardContainer.appendChild(div)
 
   listenForLikes(portrait)
   commentSection(portrait)
