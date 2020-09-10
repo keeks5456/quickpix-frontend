@@ -5,7 +5,7 @@
   let button = document.querySelector('.btn btn-primary')
   let mainContainer = document.querySelector('.main')
   const profileContainer = document.querySelector('.profile')
-
+  //this is for submitting new portrait
   function listenForSubmit(){
   const addPortrait = document.querySelector('.form')
   addPortrait.addEventListener('submit', (e) => {
@@ -13,8 +13,34 @@
   addNewPortrait(portrait)
   addPortrait.reset()
 })
+  }  
+listenForSubmit()
+
+  // this is for delete
+function listenForDelete(portrait){
+  const currentCard = document.getElementById(portrait.id)
+  const deleteBtn = currentCard.querySelector('#delete')
+  deleteBtn.addEventListener('click', () => {
+    deletePortrait(portrait)
+  })
+  // listenForDelete()
 }
-  listenForSubmit()
+
+
+//delete method to delete card
+const deletePortrait = (portrait) => {
+  const currentCard = document.getElementById(portrait.id)
+  currentCard.remove()
+  fetch(`http://localhost:3000/portraits/${portrait.id}`,{
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
 
   //fetch user api
   const fetchOneUser = () => {
@@ -81,14 +107,17 @@ const buildPortrait = (portrait) => {
         </form>
         
         <div class="likes-section">
-        <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
-  ` 
+
+        <button id="delete"> X </button>
+         <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
+           ` 
   mainContainer.appendChild(div)
 
   listenForLikes(portrait)
   commentSection(portrait)
   listenForComment(portrait)
   listenForEditComment(portrait)
+  listenForDelete(portrait)
 } // end of buildPortrait
 
 
@@ -100,7 +129,7 @@ const buildPortrait = (portrait) => {
 
     })
   }
-
+//patch request likes
   const patchLikes = (portrait) => {
     data = {
       like: portrait.attributes.like += 1,
@@ -120,7 +149,7 @@ const buildPortrait = (portrait) => {
 
     })
   }
-
+//create comments
   function commentSection(portrait){
       const newUl = document.createElement('ul')
       newUl.className = 'comments'
@@ -140,7 +169,7 @@ const buildPortrait = (portrait) => {
       const description = currentCard.querySelector('.description')
       description.after(newUl)
     }
-
+//event listen for comments
     function listenForComment(portrait){
       const portraitComment = document.getElementById(portrait.id)
       const commentForm = portraitComment.querySelector('.comment-form')
@@ -150,7 +179,7 @@ const buildPortrait = (portrait) => {
         commentForm.reset()
       })
     }
-
+//fetch comments
     function postComments(e){
       console.log()
       data = {
@@ -175,7 +204,7 @@ const buildPortrait = (portrait) => {
         console.log(ul)
         ul.appendChild(li)
 
-        // console.log(json)
+
       })
     }
 
@@ -239,7 +268,7 @@ const addNewPortrait = (e) => {
   .then(res => res.json())
   .then(json => {
     console.log(json)
-    buildPortrait(json)
+    // buildPortrait(json)
   })
 }
 
