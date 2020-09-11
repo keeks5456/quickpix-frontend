@@ -21,11 +21,11 @@
   }
   
   .like-button:hover {
-    color: red;
+    color: salmon;
   }
   
   .like-button:active {
-    color: red;
+    color: salmon;
   }
   
   .like-button:focus {
