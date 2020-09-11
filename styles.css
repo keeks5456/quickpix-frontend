@@ -44,8 +44,7 @@
   }
 
   img {
- 
-    height: 40em;
+    height: 30em;
     width: 100%;
     object-fit: cover;
   }
@@ -106,17 +105,9 @@
 
 a:link, a:visited {
   background-color: #b58900;
-
-
-#new-portrait-btn{
-  background-color: #f44336;
-
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
 }
+
+
 
 .comment-button {
   background-color: darkcyan;
@@ -128,7 +119,7 @@ a:link, a:visited {
 }
 
 a:link, a:visited {
-  background-color: #f44336;
+  background-color: #b58900;
   color: white;
   padding: 14px 25px;
   text-align: center;
