@@ -1,20 +1,10 @@
 .qpicon {
   text-align: right;
-  color:orange;
+  color:goldenrod;
   padding-right: 10px;
 }
-.Itext {
-  color:black;
-}
-.Dtext {
-  color:black;
-}
-.Rtext {
-  color:black;
-}
-.submit {
 
-}
+
 .likes-section {
     display: flex;
     justify-content: space-between;
@@ -110,10 +100,10 @@
 .github {
   text-align: right;
   padding-right: 10px;
-  color: orange;
+  color: #b58900;
 }
 a:link, a:visited {
-  background-color: #f44336;
+  background-color: #b58900;
   color: white;
   padding: 14px 25px;
   text-align: center;
