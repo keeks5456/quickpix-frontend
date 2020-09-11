@@ -1,4 +1,4 @@
-  let addPortrait = false
+let addPortrait = false
 
   const addBtn = document.querySelector('#new-portrait-btn')
 
@@ -90,7 +90,6 @@ const deletePortrait = (portrait) => {
     const userBio = document.createElement('div')
     userBio.className = 'user-bio'
     userBio.innerHTML = `
-
     <div class="card mb-3">
   <div class="card-body">
     <h5 class="card-title">${user.name}</h5>
@@ -130,9 +129,9 @@ const buildPortrait = (portrait) => {
           />
           <button class="comment-button" type="submit">Post</button>
         </form>
-        <button id="delete"> X </button>
         <div class="likes-section">
         <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
+        <i class="far fa-window-close fa-3x" id="delete"></i>
         </div>
       </div>
       

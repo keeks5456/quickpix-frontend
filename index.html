@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>QickPix</title>
+    <title class="Title">QuickPix</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +10,17 @@
     <!-- Bootstrap & CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/solar/bootstrap.min.css" integrity="sha384-NCwXci5f5ZqlDw+m7FwZSAwboa0svoPPylIW3Nf+GBDsyVum+yArYnaFLE9UDzLd" crossorigin="anonymous">
     <!-- Bootswatch -->
 
-
+    <link rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7a3c15a8ba.js" crossorigin="anonymous"></script>
     <!-- js script tag -->
     <script defer type="text/javascript" src="index.js"></script>
-
     <!-- JQuery heart animation -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
   </head>
+
   <body class="the-body">
     
     <div class='container add-form' style="text-align:center" >
@@ -32,27 +33,34 @@
       </form>
     </div>
     <p class="form-p" style="text-align:center">
+  <body class="body">
+    <h1 class="qpicon">quickPix</h1>
+    <div class='container add-form' style="text-align:center">
+      <form class='form'>
+        <label for="portrait" class="Itext">Image url:</label>
+        <input type="text" id="portrait"  name="portrait" value="" placeholder="Enter Picture URL"><br><br>
+        <label for="description" class="Dtext">Description:</label>
+        <input type="text" id="description" name="description" value="" placeholder="Enter Image Description"><br><br>
+        <input type="submit" class="submit" value="Submit">
+      </form>
+    </div>
+    <p style="text-align:center" class="Rtext">
       Ready To Post Your Portraits! <button id="new-portrait-btn">Add New Portrait!</button>
     </p>
-
-    <!-- this container encapsulates the entire profile of the user -->
     <div class="main container">
       <div class="profile container">
-
       </div>
-    </div>
-    <div class="cards container">
-
-    </div>
-    <div id="github-handle">
-       <!-- insert our github handles, this should be sectioned at the bottom right or we make it a footer?? -->
-    </div>
+        </div>
+        </div>
+        <div class="cards container">
+        </div>
+<H5 class="creators">Meet the Creators</H5>
+<p class ="github"><b><a href="https://github.com/keeks5456" target="_blank">Akiko Green</a></b></p> 
+<p class="github"><b><a href="https://github.com/gabe571" target="_blank">Gabriel Castro</a></b></p>  
+        </div>
       </div>
     </div> 
     <!-- end of main container div -->
-
- 
-
   </body>
 </html>
 
