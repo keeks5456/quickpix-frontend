@@ -54,15 +54,15 @@
 
   img {
  
-    height: 20em;
+    height: 40em;
     width: 100%;
     object-fit: cover;
   }
 
  div.cards.container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
  }
  .creators {
    padding-right: 10px;
@@ -74,6 +74,7 @@
   padding-right: 10px;
   color: orange;
 }
+
 a:link, a:visited {
   background-color: #f44336;
   color: white;
@@ -83,6 +84,9 @@ a:link, a:visited {
   display: inline-block;
 }
 
+#delete {
+  text-align: right;
+}
   
 
 
