@@ -153,7 +153,7 @@ const buildPortrait = (portrait) => {
 
     })
   }
-//patch request likes
+
   const patchLikes = (portrait) => {
     data = {
       like: portrait.attributes.like += 1,
@@ -173,7 +173,7 @@ const buildPortrait = (portrait) => {
 
     })
   }
-//create comments
+
   function commentSection(portrait){
       const newUl = document.createElement('ul')
       newUl.className = 'comments'
@@ -188,13 +188,12 @@ const buildPortrait = (portrait) => {
         editBtn.innerHTML = `
         <i class="fas fa-pen-square"></i>` 
         li.appendChild(editBtn)
-
       })
       const currentCard= document.getElementById(portrait.id)
       const description = currentCard.querySelector('.description')
       description.after(newUl)
     }
-//event listen for comments
+
     function listenForComment(portrait){
       const portraitComment = document.getElementById(portrait.id)
       const commentForm = portraitComment.querySelector('.comment-form')
@@ -204,7 +203,7 @@ const buildPortrait = (portrait) => {
         commentForm.reset()
       })
     }
-//fetch comments
+
     function postComments(e){
       console.log()
       data = {
@@ -232,23 +231,18 @@ const buildPortrait = (portrait) => {
 
       })
     }
-
-    // edit the comments here
-    // iterate comments here
-    // query elementbyClass, iterate over
     
     function listenForEditComment(portrait){
       const currentCard = document.getElementById(portrait.id)
       let editBtn = currentCard.querySelector('button.edit-button')
+      console.log(editBtn)
       editBtn.addEventListener('click', (e)=> {
           patchEditComments(portrait, e)
         // console.log(portrait, e)
       })
     }
 
-    // event delegation on one whole div or put 
-    // check to see if some click on specific button (edit)event listener in each one
-    // 
+  
     function patchEditComments(e){
       let getComments = e.attributes.comments
       getComments.forEach(comment => {
@@ -273,14 +267,11 @@ const buildPortrait = (portrait) => {
         console.log(json)
         console.log(e)
         const li = document.getElementById(json.content)
- 
-  
       })
     }
     
-  // create a post
-function addNewPortrait(e) {
 
+function addNewPortrait(e) {
   console.log(e)
   let portrait = {
     img_url: e.target[0].value,
