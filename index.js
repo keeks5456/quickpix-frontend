@@ -30,7 +30,7 @@ let addPortrait = false
   addPortrait.addEventListener('submit', (e) => {
   e.preventDefault()
   addNewPortrait(e)
-  debugger
+
   addPortrait.reset()
 })
   }  
@@ -112,7 +112,6 @@ fetchAllPhotos()
 
 //build photos
 const buildPortrait = (portrait) => {
-  // debugger
   let div = document.createElement('div')
   div.className = 'card'
   div.id = portrait.id
@@ -235,21 +234,27 @@ const buildPortrait = (portrait) => {
     }
 
     // edit the comments here
+    // iterate comments here
+    // query elementbyClass, iterate over
+    
     function listenForEditComment(portrait){
       const currentCard = document.getElementById(portrait.id)
       let editBtn = currentCard.querySelector('button.edit-button')
-     
       editBtn.addEventListener('click', (e)=> {
           patchEditComments(portrait, e)
         // console.log(portrait, e)
       })
     }
 
+    // event delegation on one whole div or put 
+    // check to see if some click on specific button (edit)event listener in each one
+    // 
     function patchEditComments(e){
-      // let getComments = e.attributes.comments
-      // getComments.forEach(comment => {
-      //   comment.
-      // })
+      let getComments = e.attributes.comments
+      getComments.forEach(comment => {
+        comment.content
+        console.log(comment)
+      })
 
       let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
       let data = {
@@ -269,13 +274,13 @@ const buildPortrait = (portrait) => {
         console.log(e)
         const li = document.getElementById(json.content)
  
-        debugger
+  
       })
     }
     
   // create a post
 function addNewPortrait(e) {
-  debugger
+
   console.log(e)
   let portrait = {
     img_url: e.target[0].value,
