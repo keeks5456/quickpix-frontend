@@ -1,17 +1,10 @@
 .qpicon {
   text-align: right;
-  color:orange;
+  color:goldenrod;
   padding-right: 10px;
 }
-.Itext {
-  color:black;
-}
-.Dtext {
-  color:black;
-}
-.Rtext {
-  color:black;
-}
+
+
 .likes-section {
     display: flex;
     justify-content: space-between;
@@ -34,11 +27,11 @@
   }
   
   .like-button:hover {
-    color: red;
+    color: salmon;
   }
   
   .like-button:active {
-    color: red;
+    color: salmon;
   }
   
   .like-button:focus {
@@ -108,11 +101,16 @@
 .github {
   text-align: right;
   padding-right: 10px;
-  color: orange;
+  color: #b58900;
 }
+
+a:link, a:visited {
+  background-color: #b58900;
+
 
 #new-portrait-btn{
   background-color: #f44336;
+
   color: white;
   padding: 14px 25px;
   text-align: center;
