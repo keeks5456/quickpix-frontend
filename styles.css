@@ -1,4 +1,20 @@
+.qpicon {
+  text-align: right;
+  color:orange;
+  padding-right: 10px;
+}
+.Itext {
+  color:black;
+}
+.Dtext {
+  color:black;
+}
+.Rtext {
+  color:black;
+}
+.submit {
 
+}
 .likes-section {
     display: flex;
     justify-content: space-between;
@@ -32,6 +48,41 @@
     outline: none;
   }
 
+  .body {
+    background-color: #002b36
+  }
+
+  img {
+ 
+    height: 20em;
+    width: 100%;
+    object-fit: cover;
+  }
+
+ div.cards.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+ }
+ .creators {
+   padding-right: 10px;
+   text-align: right;
+   color: black;
+ }
+.github {
+  text-align: right;
+  padding-right: 10px;
+  color: orange;
+}
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
   
+
 
