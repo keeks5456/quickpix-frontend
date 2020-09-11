@@ -94,7 +94,7 @@ const deletePortrait = (portrait) => {
   <div class="card-body">
     <h5 class="card-title">${user.name}</h5>
     <p class="card-text">${user.bio}</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <p class="card-text"><small class="text-muted></small></p>
   </div>
 </div>
     `
@@ -117,6 +117,7 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
+        <i class="far fa-window-close fa-3x" id="delete"></i>
         <img src= ${portrait.attributes.img_url} class="profile" alt="Avatar" >
         <div class="container">
         <h5 class='description'>Caption: ${portrait.attributes.description}</h5>
@@ -131,7 +132,6 @@ const buildPortrait = (portrait) => {
         </form>
         <div class="likes-section">
         <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
-        <i class="far fa-window-close fa-3x" id="delete"></i>
         </div>
       </div>
       
@@ -186,7 +186,8 @@ const buildPortrait = (portrait) => {
         const editBtn = document.createElement('button')
         editBtn.className = 'edit-button'
         editBtn.dataset.commentId = comment.id
-        editBtn.innerText = '...' 
+        editBtn.innerHTML = `
+        <i class="fas fa-pen-square"></i>` 
         li.appendChild(editBtn)
 
       })

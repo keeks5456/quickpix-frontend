@@ -44,7 +44,8 @@
   }
 
   img {
-    height: 20em;
+ 
+    height: 40em;
     width: 100%;
     object-fit: cover;
   }
@@ -55,8 +56,8 @@
 
  div.cards.container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
  }
 
 
@@ -102,8 +103,14 @@
   padding-right: 10px;
   color: #b58900;
 }
+
 a:link, a:visited {
   background-color: #b58900;
+
+
+#new-portrait-btn{
+  background-color: #f44336;
+
   color: white;
   padding: 14px 25px;
   text-align: center;
@@ -111,7 +118,27 @@ a:link, a:visited {
   display: inline-block;
 }
 
+.comment-button {
+  background-color: darkcyan;
+  color: white;
+  padding: 2px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#delete {
+  text-align: right;
+}
   
 
 
