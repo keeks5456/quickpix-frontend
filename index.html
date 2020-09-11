@@ -10,6 +10,8 @@
     <!-- Bootstrap & CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/solar/bootstrap.min.css" integrity="sha384-NCwXci5f5ZqlDw+m7FwZSAwboa0svoPPylIW3Nf+GBDsyVum+yArYnaFLE9UDzLd" crossorigin="anonymous">
+    <!-- Bootswatch -->
 
 
     <!-- js script tag -->
@@ -18,38 +20,33 @@
     <!-- JQuery heart animation -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   </head>
-  <body>
+  <body class="the-body">
     
-    <div class='container add-form' style="text-align:center">
-      <form class='form'>
+    <div class='container add-form' style="text-align:center" >
+      <form class='form' >
         <label for="portrait">Image url:</label>
-        <input type="text" id="portrait"  name="portrait" value="" placeholder="Enter Picture URL"><br><br>
+        <input type="text" id="portrait"  name="portrait" value="" placeholder="Enter Picture URL"><br>
         <label for="description">Description:</label>
-        <input type="text" id="description" name="description" value="" placeholder="Enter Image Description"><br><br>
+        <input type="text" id="description" name="description" value="" placeholder="Enter Image Description">
         <input type="submit" value="Submit">
       </form>
     </div>
-    <p style="text-align:center">
+    <p class="form-p" style="text-align:center">
       Ready To Post Your Portraits! <button id="new-portrait-btn">Add New Portrait!</button>
     </p>
+
     <!-- this container encapsulates the entire profile of the user -->
     <div class="main container">
       <div class="profile container">
-        <!-- in a div profile picture goes here DONE --> 
-        <!-- <div class='user-profile-pic' id="user.id"></div> DONE -->
-        <!-- in a div user name & bio info goes here DONE -->
+
       </div>
-        <!-- insert all the values for our portrait [meaning: img, description, likes, comments] -->
-        </div>
-        <div id="github-handle">
-        </div>
-        <div class="cards container">
-        </div>
-<!-- please add colors to button -->
-<!-- go to bootswatch.com footer add icons but a different for footers-->
-        <div id="github-handle">
-        </div>
-        <!-- insert our github handles, this should be sectioned at the bottom right or we make it a footer?? -->
+    </div>
+    <div class="cards container">
+
+    </div>
+    <div id="github-handle">
+       <!-- insert our github handles, this should be sectioned at the bottom right or we make it a footer?? -->
+    </div>
       </div>
     </div> 
     <!-- end of main container div -->

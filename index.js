@@ -7,9 +7,9 @@
     console.log(addPortrait)
     addPortrait = !addPortrait
     if(addPortrait){
-      portraitFormContainer.style.display = "none"
-    } else {
       portraitFormContainer.style.display = "block"
+    } else {
+      portraitFormContainer.style.display = "none"
     }
   })
   console.log(portraitFormContainer)
@@ -120,7 +120,7 @@ const buildPortrait = (portrait) => {
   div.innerHTML = `
         <img src= ${portrait.attributes.img_url} class="profile" alt="Avatar" >
         <div class="container">
-        <h5 class='description'>description: ${portrait.attributes.description}</h5>
+        <h5 class='description'>Caption: ${portrait.attributes.description}</h5>
         <form data-portrait=${portrait.id} class="comment-form">
           <input
             class="comment-input"

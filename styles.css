@@ -32,15 +32,18 @@
     outline: none;
   }
 
-  body {
-    background-color: #002b36
+  .the-body {
+    background-color: #002b36 
   }
 
   img {
- 
     height: 20em;
     width: 100%;
     object-fit: cover;
+  }
+
+  div.user-profile-pic {
+    transition: 0.5s;
   }
 
  div.cards.container {
@@ -49,8 +52,37 @@
   grid-gap: 15px;
  }
 
+ div.container.add-form {
+  font-weight: bold;
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  display: none;
+  opacity: .8;
+  color: #b58900 ;
+ }
 
+ .form-p {
+  color: #b58900 ;
+  font-weight: bold;
+ }
 
+ p{
+  font-weight: bold;
+ }
+
+ .card-title {
+  font-weight: bold;
+ }
+
+ .description {
+  font-weight: bold;
+  color: white;
+ }
+
+ li {
+  font-weight: bold;
+ }
 
   
 
