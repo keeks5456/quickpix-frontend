@@ -239,43 +239,45 @@ const buildPortrait = (portrait) => {
     
     function listenForEditComment(portrait){
       const currentCard = document.getElementById(portrait.id)
-      let editBtn = currentCard.querySelector('button.edit-button')
-      editBtn.addEventListener('click', (e)=> {
-          patchEditComments(portrait, e)
-        // console.log(portrait, e)
+      let parentUl = currentCard.querySelector('ul')
+      parentUl.addEventListener('click', (e) => {
+
+        if(e.target.className === 'fas fa-pen-square'){
+          patchEditComments(portrait)
+        } 
       })
     }
 
     // event delegation on one whole div or put 
     // check to see if some click on specific button (edit)event listener in each one
     // 
-    function patchEditComments(e){
-      let getComments = e.attributes.comments
-      getComments.forEach(comment => {
-        comment.content
+    function patchEditComments(portrait){
+      console.log(portrait)
+      const iterateComments = portrait.attributes.comments
+      iterateComments.map(comment => {
         console.log(comment)
       })
-
-      let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
-      let data = {
-        content: commentPrompt
-      }
+      debugger
+      // let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
+      // let data = {
+      //   content: commentPrompt
+      // }
       // debugger
-      fetch(`http://localhost:3000/comments/${e.id}`,{
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(res => res.json())
-      .then(json => {
-        console.log(json)
-        console.log(e)
-        const li = document.getElementById(json.content)
+      // fetch(`http://localhost:3000/comments/${e.id}`,{
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(data)
+      // })
+      // .then(res => res.json())
+      // .then(json => {
+      //   console.log(json)
+      //   console.log(e)
+      //   const li = document.getElementById(json.content)
  
   
-      })
+      // })
     }
     
   // create a post
