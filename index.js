@@ -12,7 +12,7 @@ let addPortrait = false
       portraitFormContainer.style.display = "none"
     }
   })
-  console.log(portraitFormContainer)
+
 
 
   const userURL = "http://localhost:3000/users"
@@ -29,7 +29,8 @@ let addPortrait = false
   const addPortrait = document.querySelector('.form')
   addPortrait.addEventListener('submit', (e) => {
   e.preventDefault()
-  addNewPortrait(portrait)
+  addNewPortrait(e)
+  debugger
   addPortrait.reset()
 })
   }  
@@ -81,7 +82,6 @@ const deletePortrait = (portrait) => {
     image.src = user.image
     userDiv.appendChild(image)
     profileContainer.appendChild(userDiv)
-  
   }
 
   //build user bio
@@ -238,7 +238,7 @@ const buildPortrait = (portrait) => {
     function listenForEditComment(portrait){
       const currentCard = document.getElementById(portrait.id)
       let editBtn = currentCard.querySelector('button.edit-button')
-      console.log(editBtn)
+     
       editBtn.addEventListener('click', (e)=> {
           patchEditComments(portrait, e)
         // console.log(portrait, e)
@@ -273,13 +273,13 @@ const buildPortrait = (portrait) => {
       })
     }
     
-
-
   // create a post
-const addNewPortrait = (e) => {
+function addNewPortrait(e) {
+  debugger
+  console.log(e)
   let portrait = {
-    img_url: e.form[0].value,
-    description: e.form[1].value,
+    img_url: e.target[0].value,
+    description: e.target[1].value,
     like: 0,
     user_id: 1
   }
@@ -294,7 +294,7 @@ const addNewPortrait = (e) => {
   .then(res => res.json())
   .then(json => {
     console.log(json)
-    // buildPortrait(json)
+    buildPortrait(json)
   })
 }
 
