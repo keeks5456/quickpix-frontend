@@ -299,7 +299,7 @@ function addNewPortrait(e) {
   .then(res => res.json())
   .then(json => {
     console.log(json)
-    buildPortrait(json)
+    // buildPortrait(json)
   })
 }
 
