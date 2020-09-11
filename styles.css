@@ -12,9 +12,6 @@
 .Rtext {
   color:black;
 }
-.submit {
-
-}
 .likes-section {
     display: flex;
     justify-content: space-between;
@@ -48,8 +45,9 @@
     outline: none;
   }
 
-  .body {
-    background-color: #002b36
+
+  .the-body {
+    background-color: #002b36 
   }
 
   img {
@@ -59,11 +57,49 @@
     object-fit: cover;
   }
 
+  div.user-profile-pic {
+    transition: 0.5s;
+  }
+
  div.cards.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
  }
+
+
+ div.container.add-form {
+  font-weight: bold;
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  display: none;
+  opacity: .8;
+  color: #b58900 ;
+ }
+
+ .form-p {
+  color: #b58900 ;
+  font-weight: bold;
+ }
+
+ p{
+  font-weight: bold;
+ }
+
+ .card-title {
+  font-weight: bold;
+ }
+
+ .description {
+  font-weight: bold;
+  color: white;
+ }
+
+ li {
+  font-weight: bold;
+ }
+
  .creators {
    padding-right: 10px;
    text-align: right;
