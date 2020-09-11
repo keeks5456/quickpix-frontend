@@ -303,17 +303,3 @@ const addNewPortrait = (e) => {
 
 
 
-// <img src= ${portrait.attributes.img_url}>
-// <h5 class='description'>description: ${portrait.attributes.description}</h5>
-// <form data-portrait=${portrait.id} class="comment-form">
-//   <input
-//     class="comment-input"
-//     type="text"
-//     name="comment"
-//     placeholder="Add a comment..."
-//   />
-//   <button class="comment-button" type="submit">Post</button>
-// </form>
-// <button id="delete"> X </button>
-// <div class="likes-section">
-// <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
