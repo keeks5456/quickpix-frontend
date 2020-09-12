@@ -252,15 +252,17 @@ const buildPortrait = (portrait) => {
     // check to see if some click on specific button (edit)event listener in each one
     // 
     function patchEditComments(portrait){
-      console.log(portrait)
+      // console.log(portrait)
       const iterateComments = portrait.attributes.comments
       iterateComments.map(comment => {
+        return comment.content[0]
+        debugger
         console.log(comment)
       })
-      debugger
-      // let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
+
+      // let commentPrompt = prompt("Edit Comment Here", iterateComments)
       // let data = {
-      //   content: commentPrompt
+      //   content: iterateComments
       // }
       // debugger
       // fetch(`http://localhost:3000/comments/${e.id}`,{
@@ -304,9 +306,4 @@ function addNewPortrait(e) {
     buildPortrait(json)
   })
 }
-
-
-
-
-
 
