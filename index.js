@@ -116,7 +116,7 @@ const buildPortrait = (portrait) => {
   div.className = 'card'
   div.id = portrait.id
   div.innerHTML = `
-        <i class="far fa-window-close fa-3x" id="delete"></i>
+        <i class="far fa-window-close fa-1x" id="delete"></i>
         <img src= ${portrait.attributes.img_url} class="profile" alt="Avatar" >
         <div class="container">
         <h5 class='description'>Caption: ${portrait.attributes.description}</h5>
