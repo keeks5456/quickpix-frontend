@@ -1,6 +1,6 @@
 .qpicon {
   text-align: right;
-  color:goldenrod;
+  color: orange;
   padding-right: 10px;
 }
 
@@ -46,11 +46,6 @@
     height: 30em;
     width: 100%;
     object-fit: cover;
-  }
-
-  
-  div.user-profile-pic {
-    width: 1000px;
   }
 
  div.cards.container {
@@ -127,6 +122,3 @@ a:link, a:visited {
 #delete {
   text-align: right;
 }
-  
-
-
