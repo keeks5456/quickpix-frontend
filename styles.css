@@ -4,7 +4,6 @@
   padding-right: 10px;
 }
 
-
 .likes-section {
     display: flex;
     justify-content: space-between;
@@ -46,19 +45,19 @@
   img {
     height: 30em;
     width: 100%;
+    border-style: solid;
     object-fit: cover;
   }
 
   div.user-profile-pic {
-    transition: 0.5s;
+    width: 100%;
   }
 
  div.cards.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 20px;
  }
-
 
  div.container.add-form {
   font-weight: bold;
@@ -106,8 +105,6 @@
 a:link, a:visited {
   background-color: #b58900;
 }
-
-
 
 .comment-button {
   background-color: darkcyan;

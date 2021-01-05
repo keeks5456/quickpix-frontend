@@ -91,7 +91,7 @@ const deletePortrait = (portrait) => {
     userBio.className = 'user-bio'
     userBio.innerHTML = `
     <div class="card mb-3">
-  <div class="card-body">
+   <div class="card-body">
     <h5 class="card-title">${user.name}</h5>
     <p class="card-text">${user.bio}</p>
     <p class="card-text"><small class="text-muted></small></p>
@@ -130,11 +130,10 @@ const buildPortrait = (portrait) => {
           <button class="comment-button" type="submit">Post</button>
         </form>
         <div class="likes-section">
-        <button class="like-button"> ${portrait.attributes.like} likes ♥</button>
+        <button class="like-button"> ${portrait.attributes.like} likes ♥ </button>
         </div>
       </div>
-      
-           ` 
+      ` 
   cardContainer.appendChild(div)
 
   listenForLikes(portrait)
@@ -183,11 +182,11 @@ const buildPortrait = (portrait) => {
         li.textContent = comment.content
         newUl.appendChild(li)
         const editBtn = document.createElement('button')
-        editBtn.className = 'edit-button'
+        // editBtn.className = 'edit-button'
         editBtn.dataset.commentId = comment.id
         editBtn.innerHTML = `
-        <i class="fas fa-pen-square"></i>` 
-        li.appendChild(editBtn)
+         <i class="fas fa-pen-square"></i>` 
+        // li.appendChild(editBtn)
 
       })
       const currentCard= document.getElementById(portrait.id)
@@ -228,10 +227,9 @@ const buildPortrait = (portrait) => {
         li.textContent = json["data"].attributes.content
         console.log(ul)
         ul.appendChild(li)
-
-
       })
     }
+
 
     // edit the comments here
     // iterate comments here
@@ -257,27 +255,26 @@ const buildPortrait = (portrait) => {
       iterateComments.map(comment => {
         console.log(comment)
       })
+      let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
+      let data = {
+        content: commentPrompt
+      }
       debugger
-      // let commentPrompt = prompt("Edit Comment Here", e.attributes.comments[0].content)
-      // let data = {
-      //   content: commentPrompt
-      // }
-      // debugger
-      // fetch(`http://localhost:3000/comments/${e.id}`,{
-      //   method: 'PATCH',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(data)
-      // })
-      // .then(res => res.json())
-      // .then(json => {
-      //   console.log(json)
-      //   console.log(e)
-      //   const li = document.getElementById(json.content)
+      fetch(`http://localhost:3000/comments/${e.id}`,{
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        console.log(e)
+        const li = document.getElementById(json.content)
  
   
-      // })
+      })
     }
     
   // create a post
