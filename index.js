@@ -119,7 +119,7 @@ const buildPortrait = (portrait) => {
         <i class="far fa-window-close fa-1x" id="delete"></i>
         <img src= ${portrait.attributes.img_url} class="profile" alt="Avatar" >
         <div class="container">
-        <h5 class='description'>Caption: ${portrait.attributes.description}</h5>
+        <h5 class='description'>Caption: ${portrait.attributes.description}</h5> 
         <form data-portrait=${portrait.id} class="comment-form">
           <input
             class="comment-input"
@@ -130,7 +130,7 @@ const buildPortrait = (portrait) => {
           <button class="comment-button" type="submit">Post</button>
         </form>
         <div class="likes-section">
-        <button class="like-button"> ${portrait.attributes.like} likes ♥ </button>
+        <button class="like-button"> ${portrait.attributes.like} ♥ </button>
         </div>
       </div>
       ` 
@@ -168,7 +168,7 @@ const buildPortrait = (portrait) => {
     .then(json => {
       let currentCard = document.getElementById(json.id)
       let button = currentCard.querySelector('.like-button')
-      button.textContent = `${json.like} likes ♥`
+      button.textContent = `${json.like}  ♥`
 
     })
   }

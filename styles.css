@@ -45,12 +45,12 @@
   img {
     height: 30em;
     width: 100%;
-    border-style: solid;
     object-fit: cover;
   }
 
+  
   div.user-profile-pic {
-    width: 100%;
+    width: 1000px;
   }
 
  div.cards.container {
@@ -94,7 +94,7 @@
  .creators {
    padding-right: 10px;
    text-align: right;
-   color: black;
+   color: orange;
  }
 .github {
   text-align: right;
